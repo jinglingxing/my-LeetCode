@@ -32,31 +32,33 @@ class Solution:
             return l1
         
         if l1.val <= l2.val:
-            l3 = ListNode(l1.val)
-            l1 = l1.next
+            l3 = ListNode(l1.val) #set the head of listNode l3
+            l1 = l1.next #the move the head of l1
         else:
-            l3 = ListNode(l2.val)
-            l2 = l2.next
+            l3 = ListNode(l2.val) #set the head of listNode l3
+            l2 = l2.next #the move the head of l2
         head = l3
         
-        while (l1 is not None) or (l2 is not None):
-            if l1 is None:
-                l3.next = l2.next
-                break
-            if l2 is None:
-                l3.next = l1.next
+        while (l1 is not None) or (l2 is not None): #when l1 and l2 are not reached None
+    
+            if l1 is None:  #but if l1 reached None
+                l3.next = l2.next #add the rest of l2 to l3
+                break 
+            if l2 is None:  #but if l2 reached None
+                l3.next = l1.next  #add the rest of l1 to l3
                 break
             
-            if l1.val <= l2.val:
-                l3.next = ListNode(l1.val)
-                l1 = l1.next
-                l3 = l3.next
+            if l1.val <= l2.val: 
+                l3.next = ListNode(l1.val) #add listnode(l1.val) to l3.next
+                l1 = l1.next #move l1
+                l3 = l3.next #move l3, 
+                #otherwise the listnode(l1.val) will always add at the end of the head of l3
             else:
                 l3.next = ListNode(l2.val)
                 l2 = l2.next
                 l3 = l3.next
         
-        return head
+        return head #return the head of l3
             
                 
 
